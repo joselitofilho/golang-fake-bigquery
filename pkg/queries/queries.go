@@ -35,7 +35,7 @@ func ExecuteQuery(query string, projects map[string]data.Project,
 		return executeSelectStar(projectName, datasetName, tableName, limit, projects)
 
 	} else {
-		log.Fatalf("Can't parse query: %s", query)
-		return nil
+		log.Printf("Can't parse query: %s", query)
+		return &data.Result{}
 	}
 }
