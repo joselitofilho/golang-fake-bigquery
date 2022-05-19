@@ -7,13 +7,17 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
+	"strconv"
 
 	"github.com/joselitofilho/golang-fake-bigquery/pkg/routes"
 )
 
 func main() {
+	defaultPort, _ := strconv.Atoi(os.Getenv("FAKE_BQ_PORT"))
+
 	discoveryJsonPath := flag.String("discovery-json-path", "", "path to discovery.json")
-	portNum := flag.Int("port", 0, "port number to listen at")
+	portNum := flag.Int("port", defaultPort, "port number to listen at")
 	flag.Parse()
 
 	if *discoveryJsonPath == "" {

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+
+  app:
+    container_name: fake_bigquery
+    build: .
+    ports:
+      - 9000:9000
+    restart: on-failure
+    environment:
+      FAKE_BQ_PORT: 9000
+    volumes:
+      - .:/app
